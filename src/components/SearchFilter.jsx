@@ -7,7 +7,7 @@ function searchFilter({
     onStatusChange,
  }) {
     return (
-        <div>
+        <div className="search-filter">
             <input
                 type="text"
                 placeholder="Search employees..."

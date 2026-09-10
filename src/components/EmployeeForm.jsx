@@ -62,9 +62,9 @@ function EmployeeForm({ onSave, employee }) {
     
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="employee-form" onSubmit={handleSubmit}>
 
-            <div>
+            <div className="form-group">
                 <label>Name:</label>
                 <input
                     type="text"
@@ -73,9 +73,9 @@ function EmployeeForm({ onSave, employee }) {
                     onChange={handleChange}
                     placeholder="Enter employee name"
                 />
-                {errors.name && <p>{errors.name}</p>}
+                {errors.name && <p className="form-error">{errors.name}</p>}
             </div>
-            <div>
+            <div className="form-group">
                 <label>Email:</label>
                 <input
                     type="email"
@@ -84,9 +84,9 @@ function EmployeeForm({ onSave, employee }) {
                     onChange={handleChange}
                     placeholder="Enter employee email"
                 />
-                {errors.email && <p>{errors.email}</p>}
+                {errors.email && <p className="form-error">{errors.email}</p>}
             </div>
-            <div>
+            <div className="form-group">
                 <label>Department:</label>
                 <select
                     name="department"
@@ -99,9 +99,9 @@ function EmployeeForm({ onSave, employee }) {
                     <option value="Sales">Sales</option>
                     <option value="Marketing">Marketing</option>
                 </select>
-                {errors.department && <p>{errors.department}</p>}
+                {errors.department && <p className="form-error">{errors.department}</p>}
             </div>
-            <div>
+            <div className="form-group">
                 <label>Role:</label>
                 <input
                     type="text"
@@ -110,9 +110,9 @@ function EmployeeForm({ onSave, employee }) {
                     onChange={handleChange}
                     placeholder="Enter employee role"
                 />
-                {errors.role && <p>{errors.role}</p>}
+                {errors.role && <p className="form-error">{errors.role}</p>}
             </div>
-            <div>
+            <div className="form-group">
                 <label>Status:</label>
                 <select
                     name="status"
@@ -124,7 +124,7 @@ function EmployeeForm({ onSave, employee }) {
                 </select>
             </div>
 
-            <button type="submit">Save Employee</button>
+            <button className="primary-button" type="submit">Save Employee</button>
 
         </form>
     )

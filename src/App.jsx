@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoAddOutline } from "react-icons/io5";
 import { initialEmployees } from "./data/employees.js";
 import Navbar from "./components/Navbar.jsx";
 import StatsCard from "./components/StatsCard.jsx";
@@ -87,16 +88,52 @@ function App() {
 
       <Navbar />
       
-      <h1>Employee Dashboard</h1>
+      <main className="dashboard">
+        <h1 className="dashboard-title">Employee Dashboard</h1>
 
-      <section>
-        <h2>Statistics</h2>
+        <section className="dashboard">
+          <h2>Statistics</h2>
+          <div className="stats-cards">
+            <StatsCard title="Total Employees" value={totalEmployees} />
+            <StatsCard title="Active Employees" value={activeEmployees} />
+            <StatsCard title="Inactive Employees" value={inactiveEmployees} />
+            <StatsCard title="Departments" value={departments} />
+          </div>
+        </section>
 
-        <StatsCard title="Total Employees" value={totalEmployees} />
-        <StatsCard title="Active Employees" value={activeEmployees} />
-        <StatsCard title="Inactive Employees" value={inactiveEmployees} />
-        <StatsCard title="Departments" value={departments} />
-      </section>
+
+
+        <div className="employee-section-header">
+          <h2>Add Employee</h2>
+
+          <button
+            className="primary-button"
+            onClick={handleAddEmployee}
+          >
+            <IoAddOutline size={20} />
+          </button>
+        </div>
+
+
+        <section>
+          <h2>Employee List</h2>
+          <SearchFilter
+            search={search}
+            onSearchChange={setSearch} 
+            department={department}
+            status={status}
+            onDepartmentChange={setDepartment}
+            onStatusChange={setStatus}
+          />
+
+          <EmployeeTable
+            employees={filterEmployees}
+            onEdit={handleEditEmployee}
+            onDelete={handleDeleteEmployee}
+          />
+        </section>
+      </main>
+
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         
@@ -109,28 +146,6 @@ function App() {
           onSave={editingEmployee ? handleUpdateEmployee : handleSaveEmployee} 
         />
       </Modal>
-
-      <button onClick={handleAddEmployee}>
-        Add Employee
-      </button>
-
-      <section>
-        <h2>Employee List</h2>
-        <SearchFilter
-          search={search}
-          onSearchChange={setSearch} 
-          department={department}
-          status={status}
-          onDepartmentChange={setDepartment}
-          onStatusChange={setStatus}
-        />
-
-        <EmployeeTable
-          employees={filterEmployees}
-          onEdit={handleEditEmployee}
-          onDelete={handleDeleteEmployee}
-        />
-      </section>
     </div>
   );
 }
